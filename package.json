@@ -1,0 +1,63 @@
+{
+  "name": "teams-meeting-fix",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fix for blank pop-up dialog on first app load in ad-hoc Teams meeting (issue #15205)",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint 'packages/*/src/**/*.{ts,tsx}'",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fluentui/react": "^8.120.0",
+    "@microsoft/teams-js": "^2.24.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
+    "eslint": "^9.11.1",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
+    "setupFilesAfterFramework": [
+      "@testing-library/jest-dom"
+    ],
+    "moduleNameMapper": {
+      "^@microsoft/teams-js$": "<rootDir>/packages/components-meeting-apis/src/__mocks__/teams-js.ts"
+    },
+    "testMatch": [
+      "**/src/__tests__/**/*.test.{ts,tsx}",
+      "**/src/__tests__/**/*.spec.{ts,tsx}"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": [
+        "ts-jest",
+        {
+          "tsconfig": {
+            "jsx": "react-jsx"
+          }
+        }
+      ]
+    }
+  }
+}
